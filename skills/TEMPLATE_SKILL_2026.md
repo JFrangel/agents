@@ -47,6 +47,9 @@ metadata:
     stepN_minus_1:
       name: reflection_and_critique
       description: "Paso Oculto Obligatorio (Reflection Pattern): Critica severamente tu propio borrador. Compara contra las restricciones y mejora antes de emitir la salida final."
+    stepN_minus_0:
+      name: validation_and_circuit_breaker
+      description: "Paso Oculto: Asegura que el formato de salida cumple el schema. Si detectas un loop infinito (deadlock con otras skills), detente y escala (needs_human)."
     stepN:
       name: output_generation
       description: "Generar la respuesta final (Markdown) o emitir JSON de delegación (Handoff/Parallel) si se necesita ayuda del ecosistema."

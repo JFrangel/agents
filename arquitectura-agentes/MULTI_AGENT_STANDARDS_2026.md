@@ -83,12 +83,13 @@ El agente debe instruirse en su `SKILL.md` para usar este bloque en lugar de Mar
 
 ## 3. Arquitectura Interna de la Skill (El Workflow 2026)
 
-Para maximizar la calidad y evitar alucinaciones, la lógica interna de *cada skill* DEBE seguir un ciclo iterativo. Los agentes "top" no son "one-shot" (una sola pasada de LLM).
+Para maximizar la calidad y evitar alucinaciones, la lógica interna de *cada skill* DEBE seguir un ciclo iterativo. Los agentes "top" no son "one-shot" (una sola pasada de LLM). Inspirados en plataformas como LobeHub y arquitecturas LangGraph:
 
 1.  **Paso 0 (Internal Plan & Reason)**: Antes de generar código o respuestas, el agente genera internamente un "Plan de Ataque" (`think step-by-step`). Define cómo va a resolver el problema usando las herramientas disponibles.
-2.  **Paso 1...N (Execution)**: Ejecuta las tareas o llama a sus propias sub-herramientas (ej. buscar en web, leer DB).
+2.  **Paso 1...N (Execution)**: Ejecuta las tareas o llama a sus propias sub-herramientas (ej. buscar en web, leer DB). *Best Practice: Mantener una única responsabilidad ("One job per agent") para evitar deadlocks.*
 3.  **Paso N+1 (Reflection / Self-Critique)**: **Crucial.** Antes de emitir la respuesta final o delegar, el agente DEBE aplicar el patrón "Reflection". Actúa como su propio crítico: compara su borrador de respuesta contra las restricciones del usuario y las "best practices" del repositorio. Si la calidad no es óptima, itera sobre su propio plan.
-4.  **Paso N+2 (Output)**: Emite la respuesta en Markdown o el JSON de orquestación.
+4.  **Paso N+2 (Validation Protocol)**: Implementar validación explícita antes de un "handoff" (ej. "Esta respuesta cumple el schema JSON esperado?").
+5.  **Paso N+3 (Output)**: Emite la respuesta en Markdown o el JSON de orquestación.
 
 ## 4. State Persistence (Memoria Compartida y Context Engineering)
 
