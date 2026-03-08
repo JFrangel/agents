@@ -1,0 +1,84 @@
+{
+  "version": 3,
+  "skills": {
+    "threejs-lighting": {
+      "source": "cloudai-x/threejs-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cloudai-x/threejs-skills.git",
+      "skillPath": "skills/threejs-lighting/SKILL.md",
+      "skillFolderHash": "1a3d8f6fd58d38f7978be27790b959e1dbebf39d",
+      "installedAt": "2026-03-05T02:02:00.863Z",
+      "updatedAt": "2026-03-05T02:02:00.863Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "c2f31172b6f256272305a5e6e7228b258446899f",
+      "installedAt": "2026-03-05T02:02:03.341Z",
+      "updatedAt": "2026-03-05T02:02:03.341Z"
+    },
+    "orchestrator": {
+      "source": "local/orchestrator",
+      "sourceType": "local",
+      "sourceUrl": "",
+      "skillPath": "skills/orchestrator/SKILL.md",
+      "skillFolderHash": "0000000000000000000000000000000000000000",
+      "installedAt": "2026-03-07T12:00:00.000Z",
+      "updatedAt": "2026-03-07T12:00:00.000Z"
+    },
+    "xlsx": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/xlsx/SKILL.md",
+      "skillFolderHash": "f5fb1cdb7993b2feee8367e983e9d4d58d2eedd4",
+      "pluginName": "document-skills",
+      "installedAt": "2026-03-08T06:22:15.153Z",
+      "updatedAt": "2026-03-08T06:22:15.153Z"
+    },
+    "tailwind-design-system": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/frontend-mobile-development/skills/tailwind-design-system/SKILL.md",
+      "skillFolderHash": "0dc67032a28f3a4a60c6c8b766e2b089df26bcb3",
+      "installedAt": "2026-03-08T06:22:20.558Z",
+      "updatedAt": "2026-03-08T06:22:20.558Z"
+    },
+    "vercel-deploy": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/supercent-io/skills-template.git",
+      "skillPath": ".agent-skills/vercel-deploy/SKILL.md",
+      "skillFolderHash": "b0acd2111fba60fe19f3b6ac41d132b9af72c4ad",
+      "installedAt": "2026-03-08T06:22:25.580Z",
+      "updatedAt": "2026-03-08T06:22:25.580Z"
+    },
+    "supabase-postgres-best-practices": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/supabase/agent-skills.git",
+      "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
+      "skillFolderHash": "95fe6d29daaf88aa9bc3b505ca4defe19ceabf92",
+      "pluginName": "postgres-best-practices",
+      "installedAt": "2026-03-08T06:22:51.343Z",
+      "updatedAt": "2026-03-08T06:22:51.343Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "cline",
+    "codex",
+    "cursor",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-cli",
+    "opencode",
+    "continue"
+  ]
+}

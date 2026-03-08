@@ -1,0 +1,62 @@
+# Cursor Rules: reglas de activación y handshakes para el Orquestador
+# Ubicación esperada por `skills/*/SKILL.md` (referenciado como `.cursorrules`)
+
+# Regla: activar skill cuando el mensaje del usuario contenga cualquiera de los triggers
+activation:
+  match_type: "keyword"
+  precedence: ["security-guard","best-practices","supabase-postgres-best-practices","tailwind-design-system","vercel-deploy","plan","documentation","orchestrator"]
+  handlers:
+    - name: "default-keyword-matcher"
+      description: "Busca triggers en el texto de entrada y marca skills candidatas"
+      options:
+        case_sensitive: false
+        word_boundaries: true
+
+# Taxonomy mapping: relaciona rutas/categorías con skills relevantes
+skill_taxonomy:
+  path_prefixes:
+  "skills/ai/": ["ai-cto","ai-founder","chunk-scoring"]
+  "skills/backend/": ["crm","supabase-postgres-best-practices"]
+  "skills/core/": ["plan","orchestrator"]
+  "skills/devops/": ["security-guard","vercel-deploy"]
+  "skills/documentation/": ["documentation"]
+  "skills/frontend/": ["design-system","tailwind-design-system"]
+  "skills/testing/": ["best-practices"]
+  default_on_trigger: true
+  description: "Si un cambio impacta una ruta, resolver skills relevantes por taxonomía y añadirlas al plan. 'plan' es obligatoria en cada iteración."
+
+# Handshake enforcement: optional ephemeral handshake format (no persistent logs)
+handshake:
+  required: false
+  note: "Handshake format is available for in-memory/ephemeral responses; persistent log writing disabled by policy."
+  format: |
+    ```text
+    ⌬ SKILLS ACTIVADAS
+    {{skills_list}}
+
+    Applied
+    {{actions_summary}}
+
+    STATUS
+    {{status_flags}}
+    ```
+
+# Events: reglas específicas para eventos de cambio en código
+events:
+  on_file_change:
+    paths:
+      - "src/**"
+      - "app/**"
+      - "services/**"
+    enforce_mandatory_chain: true
+    mandatory_skills:
+      - security-guard
+      - best-practices
+      - documentation
+    description: "Al detectar cambios en código, forzar ejecución de skills de seguridad, QA y documentación antes de activar la skill objetivo."
+
+# Status mapping: cómo construir el indicador de estado en la respuesta efímera
+status_template: |
+  SKILLS: {{skills_list}}
+  APPLIED: {{actions_summary}}
+  FLAGS: {{#each skills}}{{this}}:{{status}} {{/each}}
