@@ -1,0 +1,116 @@
+# Cursor Rules: reglas de activación y handshakes para el Orquestador
+# Ubicación esperada por `skills/*/SKILL.md` (referenciado como `.cursorrules`)
+
+# Regla: orden de activación de las skills en base a su jerarquía
+activation:
+  match_type: "keyword"
+  precedence: ["orchestrator", "ai-founder", "ai-cto", "vision-architect", "agent-architect", "security-guard", "best-practices", "supabase-postgres-best-practices", "tailwind-design-system", "vercel-deploy", "documentation"]
+  handlers:
+    - name: "default-keyword-matcher"
+      description: "Busca triggers en el texto de entrada y marca skills candidatas"
+      options:
+        case_sensitive: false
+        word_boundaries: true
+# ---------------------------------------------------------------------------
+# CORE RULE: ECOSYSTEM AWARENESS
+# ---------------------------------------------------------------------------
+ecosystem_awareness:
+  active: true
+  directive: "You are part of a 21-skill AI ecosystem (NeuralForge 2026). YOU ARE NEVER ALONE. If your task requires out-of-scope work (e.g., creative ideas, security audits, database patches), you MUST delegate to the appropriate skill using Mesh Delegation. ORCHESTRATOR OMNIPRESENCE: Every final response MUST be validated by the Orchestrator. CLOSURE RULE: No task is 'Completed' without the Sello de Certificación from a Supervisor (Vision-Architect or Agent-Architect), validated by the Orchestrator."
+
+# Modos y Jerarquías de Agentes (Roles 2026)
+agent_modes:
+  supervisor: "IAs directivas (ai-founder, ai-cto, vision-architect, orchestrator, arquitectura-agentes, idea-to-startup, skill-creator). Lideran, aprueban arquitecturas y delegan. Saltan automáticamente ante toma de decisiones, no escriben código."
+  worker: "Skills especializadas (xlsx, crm, tailwind-design-system, design-system, threejs-lighting, vercel-deploy, netlify-deploy, supabase-postgres-best-practices, chunk-scoring, find-skills). Ejecutan órdenes exactas y código. Reportan a un supervisor."
+  reviewer: "Auditores (security-guard, best-practices). Bloquean builds o merges si fallan calidad o seguridad."
+  solo: "Skills independientes (tech-writer, documentation, creativity) que documentan cambios globales o generan estados transversales y ráfagas."
+
+# Taxonomy mapping: relaciona rutas/categorías con skills relevantes
+skill_taxonomy:
+  path_prefixes:
+  "skills/ai-cto/SKILL.md": ["ai-cto", "tech-strategist", "architecture", "stack", "mvp", "arquitectura", "backend", "scaling", "escalabilidad", "ask ai-cto", "delegate to ai-cto", "consultar ai-cto", "delegar a ai-cto"]
+  "skills/creativity/SKILL.md": ["creativity", "brainstorm", "ideas", "wow-factor", "premium-ui", "ux-polish", "innovation", "innovación", "pivot", "pivote", "disruptivo", "ideación", "ask creativity", "delegate to creativity", "consultar creatividad", "delegar a creatividad"]
+  "skills/ai-founder/SKILL.md": ["ai-founder", "startup", "business-model", "pitch", "monetization", "growth", "crecimiento", "modelo-negocio", "ask ai-founder", "delegate to ai-founder", "consultar ai-founder", "delegar a ai-founder"]
+  "skills/arquitectura-agentes/SKILL.md": ["arquitectura-agentes", "agent-architect", "harness", "arnés", "mcp", "context-window", "sdd", "ask arquitectura-agentes", "delegate to arquitectura-agentes", "consultar arquitectura-agentes", "delegar a arquitectura-agentes"]
+  "skills/best-practices/SKILL.md": ["best-practices", "code-reviewer", "revisión-código", "qa", "testing", "pruebas", "estándares", "ask best-practices", "delegate to best-practices", "consultar mejores prácticas", "delegar a mejores prácticas"]
+  "skills/chunk-scoring/SKILL.md": ["chunk-scoring", "rag-optimizer", "embeddings", "vector", "semántica", "ask chunk-scoring", "delegate to chunk-scoring", "consultar fragmentación", "delegar a chunk-scoring"]
+  "skills/crm/SKILL.md": ["crm", "leads", "funnel", "ventas", "sales", "ask crm", "delegate to crm", "consultar crm", "delegar a crm"]
+  "skills/design-system/SKILL.md": ["design-system", "ui", "ux", "glassmorphism", "premium", "responsivo", "ask design-system", "delegate to design-system", "consultar sistema de diseño", "delegar a sistema de diseño"]
+  "skills/documentation/SKILL.md": ["documentation", "tech-writer", "readme", "adr", "documentación", "redacción", "ask documentation", "delegate to documentation", "consultar documentación", "delegar a documentación"]
+  "skills/find-skills/SKILL.md": ["find-skills", "navigator", "navegador", "habilidades", "ayuda", "help", "ask find-skills", "delegate to find-skills", "consultar habilidades", "delegar a habilidades"]
+  "skills/idea-to-startup/SKILL.md": ["idea-to-startup", "product-mapper", "blueprint", "mapa", "conceptual", "ask idea-to-startup", "delegate to idea-to-startup", "consultar conceptualización", "delegar a idea-to-startup"]
+  "skills/netlify-deploy/SKILL.md": ["netlify-deploy", "hosting", "deploy", "despliegue", "ask netlify-deploy", "delegate to netlify-deploy", "consultar netlify", "delegar a netlify"]
+  "skills/orchestrator/SKILL.md": ["orchestrator", "orquestador", "router", "delegar", "delegate", "ask orchestrator", "delegate to orchestrator", "consultar orquestador", "delegar al orquestador"]
+  "skills/vision-architect/SKILL.md": ["vision-architect", "plan", "visión", "solución", "ask vision-architect", "delegate to vision-architect", "consultar arquitecto", "delegar a arquitecto"]
+  "skills/security-guard/SKILL.md": ["security-guard", "seguridad", "audit", "auditoría", "vulnerabilidad", "owasp", "ask security-guard", "delegate to security-guard", "consultar seguridad", "delegar a seguridad"]
+  "skills/skill-creator/SKILL.md": ["skill-creator", "crear-agente", "metaprogramming", "ask skill-creator", "delegate to skill-creator", "consultar creación de skills", "delegar a creación de skills"]
+  "skills/supabase-postgres-best-practices/SKILL.md": ["supabase-postgres-best-practices", "sql", "optimizar-sql", "db", "db-index", "rls", "ask supabase-postgres", "delegate to supabase-postgres", "consultar supabase", "delegar a supabase"]
+  "skills/tailwind-design-system/SKILL.md": ["tailwind-design-system", "tailwind", "css", "tokens", "temas", "ask tailwind-design-system", "delegate to tailwind-design-system", "consultar tailwind", "delegar a tailwind"]
+  "skills/threejs-lighting/SKILL.md": ["threejs-lighting", "webgl-engineer", "iluminación", "shaders", "webgl", "ask threejs-lighting", "delegate to threejs-lighting", "consultar iluminación", "delegar a iluminación"]
+  "skills/vercel-deploy/SKILL.md": ["vercel-deploy", "desplegar-vercel", "preview", "ask vercel-deploy", "delegate to vercel-deploy", "consultar vercel", "delegar a vercel"]
+  "skills/xlsx/SKILL.md": ["xlsx", "excel", "finanzas", "hoja-cálculo", "datos", "ask xlsx", "delegate to xlsx", "consultar excel", "delegar a excel"]
+  default_on_trigger: true
+  description: "Si un cambio impacta una ruta, resolver skills relevantes por taxonomía y añadirlas al plan. 'plan' es obligatoria en cada iteración."
+
+# Handshake enforcement: persistent documentation and handshake format
+handshake:
+  required: true
+  note: "Handshake format must be followed. PERSISTENT LOG WRITING IS MANDATORY. All architectural or skill changes MUST be recorded in CHANGELOG.md or the skill's memory.md. ZERO OMISSION RULE: Every single skill listed in 'SKILLS ACTIVADAS' MUST have a corresponding line in the 'Applied' section explaining exactly what it did. Omitting a skill from 'Applied' is strictly forbidden."
+  format: |
+    **REPORTE:** [Título corto de la acción]
+
+    ⬡ SKILLS ACTIVADAS
+    {{skills_list}}
+
+    Applied
+    {{actions_summary}}
+
+    ---
+    ⚡ STATUS DASHBOARD
+    {{status_flags}}
+    ---
+
+# Code Generation Rules: Strict Anti-Truncation
+code_generation:
+  forbid_omission: true
+  note: "NEVER use placeholders like `// ... rest of the code` or summarize changes in code blocks. All code MUST be completely written and exact. The CREAM rule strictly prohibits truncation during code writing and handshake generation. MANDATORY COMPLETENESS: If the output limit is reached, you MUST state: '⚠️ ITERATION REQUIRED: The code is incomplete due to context limits. Please ask for the rest.'. Silence is failure."
+
+# Strict Memory Management
+memory_management:
+  anti_amnesia_tools: true
+  note: "You MUST strictly execute a file-editing tool call to write into your memory.md file before finishing. CONCISENESS RULE: Your updates must be extremely short, direct bullet points. Do not write paragraphs in memory to avoid context saturation."
+
+# Project Planning Loop
+planning_loop:
+  mandatory_for_large_tasks: true
+  plan_requirements:
+    - "Detailed step-by-step implementation guide: How exactly will it be done?"
+    - "Impact analysis: What files, routes, or architectures will be affected?"
+    - "Ecosystem integration: How will this adapt to and fit within the existing 2026 ecosystem?"
+    - "Cross-skill perspective: What do other skills (like security-guard or ai-cto) think about this plan? Include their simulated feedback or actual delegation data."
+  workflow:
+    1: "Orchestrator (Router) evaluates and delegates to a Supervisor (Vision-Architect/Agent-Architect)."
+    2: "Supervisor creates a hyper-detailed plan (task.md / implementation_plan.md) and asks for user feedback."
+    3: "Upon approval, execution proceeds by designated Workers."
+    4: "After completion, documentation is created by tech-writer, audited by QA (best-practices) and CERTIFIED by a Supervisor."
+    5: "Orchestrator performs final check. If certification is missing, amonesta a los supervisores and blocks completion."
+
+# Events: reglas específicas para eventos de cambio en código
+events:
+  on_file_change:
+    paths:
+      - "src/**"
+      - "app/**"
+      - "services/**"
+    enforce_mandatory_chain: true
+    mandatory_skills:
+      - security-guard
+      - best-practices
+      - documentation
+    description: "Al detectar cambios en código, forzar ejecución de skills de seguridad, QA y documentación antes de activar la skill objetivo."
+
+# Status mapping: cómo construir el indicador de estado en la respuesta efímera
+status_template: |
+  SKILLS: {{skills_list}}
+  APPLIED: {{actions_summary}}
+  FLAGS: {{#each skills}}{{this}}:{{status}} {{/each}}
