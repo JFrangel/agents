@@ -14,6 +14,7 @@ export function Navbar() {
     { href: "/ecosystem", label: "Ecosystem", icon: Icons.Network },
     { href: "/frameworks", label: "Frameworks", icon: Icons.LayoutTemplate },
     { href: "/docs", label: "Documentation", icon: Icons.BookOpen },
+    { href: "/design-system", label: "Design System", icon: Icons.Palette },
   ];
 
   return (

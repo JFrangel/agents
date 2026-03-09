@@ -185,7 +185,12 @@ export default function NeuralShowcase() {
                     <div className={cn("p-2 rounded-lg transition-colors", isSelected ? "bg-cyan-500/20 text-cyan-400" : "bg-slate-800 text-slate-400")}>
                       <IconComponent name={skill.iconName} className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-slate-500 bg-slate-950 px-2 py-1 rounded-md">
+                    <span className={`text-[9px] uppercase tracking-wider font-black px-2 py-0.5 rounded-full border ${
+                      skill.role === 'Orquestador' ? 'bg-cyan-500/15 border-cyan-500/30 text-cyan-400' :
+                      skill.role === 'Supervisor'  ? 'bg-amber-500/15 border-amber-500/30 text-amber-400' :
+                      skill.role === 'Integrator'  ? 'bg-purple-500/15 border-purple-500/30 text-purple-400' :
+                      'bg-slate-800 border-slate-700 text-slate-400'
+                    }`}>
                       {skill.role}
                     </span>
                   </div>
